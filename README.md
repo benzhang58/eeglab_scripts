@@ -1,2 +1,2 @@
 # eeglab_scripts
-Scripts to make EEG preprocessing easier, using EEGLab via Matlab 
+Scripts to make EEG preprocessing faster/easier, using EEGLab via Matlab 
