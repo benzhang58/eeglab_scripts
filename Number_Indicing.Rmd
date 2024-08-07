@@ -1,0 +1,77 @@
+---
+title: "Number Indicing"
+author: "Ben"
+date: "2024-02-01"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE}
+adjust_numbers <- function(numbers, numbers_to_remove) {
+  # Remove the specified numbers
+  adjusted_numbers <- numbers[!numbers %in% numbers_to_remove]
+  
+  # Adjust the remaining numbers
+  for (num in numbers_to_remove) {
+    adjusted_numbers[adjusted_numbers > num] <- adjusted_numbers[adjusted_numbers > num] - 1
+  }
+  
+  return(paste(adjusted_numbers, collapse = ", "))
+}
+
+# These are the indices for each region, assuming no channels have been removed (basically the normal indicing) 
+Frontal <- c(2,3, 37, 36, 35, 7, 6, 5, 4, 38, 39, 40, 41, 42)
+Central <- c(9, 10, 11, 46, 45, 44, 14, 13, 12, 47, 48, 49, 50, 17, 18, 19, 32, 48, 49, 50)
+Parietal <- c(23, 22, 21, 20, 31, 56, 57, 58, 59, 25, 26, 30, 62, 61)
+Temporal <- c(28, 8, 15, 16, 24, 33, 43, 51, 52, 60)
+TemporalL <- c(28,8,15,16,24)
+TemporalR <- c(60,62,61,43,33)
+FrontalL <- c(2,3, 7,6,5,4)
+FrontalR <- c(36,35, 42,41,40,39)
+CentralL <- c(11,10,9,12,13,14,19,18,17)
+CentralR <- c(46,45,44,48,49,50,55,54,53)
+ParietalL <- c(23,22,21,20,25,26)
+ParietalR <- c(56,57,58,59,62,61)
+
+## Input the indices of the channels that have been removed 
+numbers_to_remove <- c()  
+
+adjusted_frontal <- adjust_numbers(Frontal, numbers_to_remove)
+adjusted_central <- adjust_numbers(Central, numbers_to_remove)
+adjusted_parietal <- adjust_numbers(Parietal, numbers_to_remove)
+adjusted_temporal <- adjust_numbers(Temporal, numbers_to_remove)
+adjusted_frontalL <- adjust_numbers(FrontalL, numbers_to_remove)
+adjusted_frontalR <- adjust_numbers(FrontalR, numbers_to_remove)
+adjusted_centralL <- adjust_numbers(CentralL, numbers_to_remove)
+adjusted_centralR <- adjust_numbers(CentralR, numbers_to_remove)
+adjusted_parietalL <- adjust_numbers(ParietalL, numbers_to_remove)
+adjusted_parietalR <- adjust_numbers(ParietalR, numbers_to_remove)
+adjusted_temporalL <- adjust_numbers(TemporalL, numbers_to_remove)
+adjusted_temporalR <- adjust_numbers(TemporalR, numbers_to_remove)
+
+
+% Display the regions with adjusted indices --> this is in copy paste format ready to be copy pasted into the epochAndCalculatePSD.m script 
+cat(
+  paste0("frontal_channels = [", adjusted_frontal, "];\n"),
+  paste0("central_channels = [", adjusted_central, "];\n"),
+  paste0("parietal_channels = [", adjusted_parietal, "];\n"),
+  paste0("temporal_channels = [", adjusted_temporal, "];\n"),
+  paste0("frontal_l_channels = [", adjusted_frontalL, "];\n"),
+  paste0("frontal_r_channels = [", adjusted_frontalR, "];\n"),
+  paste0("central_l_channels = [", adjusted_centralL, "];\n"),
+  paste0("central_r_channels = [", adjusted_centralR, "];\n"),
+  paste0("parietal_l_channels = [", adjusted_parietalL, "];\n"),
+  paste0("parietal_r_channels = [", adjusted_parietalR, "];\n"),
+  paste0("temporal_l_channels = [", adjusted_temporalL, "];\n"),
+  paste0("temporal_r_channels = [", adjusted_temporalR, "];"),
+  sep="\n"
+)
+
+
+
+
+
+```
