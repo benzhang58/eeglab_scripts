@@ -7,7 +7,7 @@
 % This is the main function you run / call in the MATLAB command window 
 
 
-function processEEGDataToCSV(participant_numbers, output_csv_path)
+function processEEGDataToCSV_Regional(participant_numbers, output_csv_path)
 
     % add path to EEGLab
     addpath('/Users/benzhang/Desktop/Casa Colina/EEGLab/');
