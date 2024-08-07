@@ -1,3 +1,7 @@
+# DISCLAIMER
+- This is just code I wrote for myself in order to streamline EEG preprocessing, hopefully it helps you too but also please double and triple check your work and make sure everything is accurate and that the scripts worked for you accurately 
+
+
 # eeglab_scripts
 This repository contains scripts to make EEG preprocessing faster/easier, using EEGLab via Matlab 
 
